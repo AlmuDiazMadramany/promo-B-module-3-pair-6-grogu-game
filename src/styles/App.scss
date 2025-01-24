@@ -16,37 +16,6 @@ html {
     color: #fff;
 }
 
-.board {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    margin-bottom: 30px;
-}
-
-.cell {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: lightgrey 0.2px solid;
-}
-
-.grogu {
-    font-size: 50px;
-    animation: bounce 0.5s infinite alternate;
-}
-
-@keyframes bounce {
-    to {
-        transform: translateY(-20%);
-    }
-}
-
 .dice {
     background-color: #fff;
     border: 2px solid #000;
@@ -98,13 +67,7 @@ html {
     margin: 0 10px;
 }
 
-/* Añade estilos para el título y los contadores de mercancía aquí */
-h1 {
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 5px #000;
-    margin-bottom: 20px;
-    text-align: center;
-}
+
 
 /* Contadores de mercancías */
 .goods-count {

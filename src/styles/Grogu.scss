@@ -1,0 +1,10 @@
+.grogu {
+  font-size: 50px;
+  animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+  to {
+      transform: translateY(-20%);
+  }
+}
