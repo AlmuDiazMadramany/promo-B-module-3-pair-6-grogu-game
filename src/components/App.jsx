@@ -25,13 +25,11 @@ function App() {
       setGrogu(grogu+1);
       //Mensaje [gameStatus]: Grogu avanza una casilla
       setGameStatus('Grogu avanza una casilla');
-      
     }else if(randomNumber === 3){
       //Se quita una galleta
       setCookie(cookie.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una galleta]
       setGameStatus('[Nombre usuario] has ayudado a Mando a recoger [una galleta]');
-      
     }else if(randomNumber === 2){
       //Se quita un huevo
       setEgg(egg.slice(1));
