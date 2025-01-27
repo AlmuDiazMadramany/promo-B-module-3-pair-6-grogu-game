@@ -2,6 +2,7 @@ import { useState } from "react"
 import "../styles/App.scss"
 import Board from "./Board";
 import Header from "./Header";
+import Dice from "./Dice";
 
 function App() {
 
@@ -11,12 +12,12 @@ function App() {
   const [frog, setFrog] = useState(["🐸", "🐸", "🐸"]);
   const [gameStatus, setGameStatus] = useState("");
 
-  const getRandomNumber = max => 
-    Math.ceil(Math.random() * max);
-
   /*generar num aleatorio
     con el num aleatorio, condicional
     */
+  const getRandomNumber = max => 
+    Math.ceil(Math.random() * max);
+
   function rollDice(){
     const randomNumber = getRandomNumber(4);
     console.log(randomNumber);
@@ -29,22 +30,18 @@ function App() {
       //Se quita una galleta
       setCookie(cookie.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una galleta]
-      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger [una galleta]');
+      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger una 🍪');
     }else if(randomNumber === 2){
       //Se quita un huevo
       setEgg(egg.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [un huevo]
-      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger [un huevo]');
+      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger un 🥚');
     }else{
       //Se quita una rana
       setFrog(frog.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una rana]
-      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger [una rana]');
+      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger una 🐸');
     };
-  };
-  
-  const handleClick = () => {
-    rollDice();
   };
 
   return (
@@ -54,7 +51,7 @@ function App() {
       <Board/>
 
       <section>
-        <button className="dice" onClick={handleClick}>Lanzar Dado</button>
+        <Dice rollDice={rollDice}/>
         <div className="game-status">{gameStatus || 'En curso'}</div>
       </section>
       
