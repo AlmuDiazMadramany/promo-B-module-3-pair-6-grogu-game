@@ -48,7 +48,7 @@ function App() {
     <>
     <Header/>
     <main className="page">
-      <Board/>
+      <Board grogu={grogu}/>
 
       <section>
         <Dice rollDice={rollDice}/>
