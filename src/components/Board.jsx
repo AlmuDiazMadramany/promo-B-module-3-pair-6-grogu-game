@@ -15,7 +15,6 @@ function Board({grogu}) {
 
   return (
     <section className="board">
-        {/*<div className="cell"><Grogu/></div>*/}
         {cellsHTML}
       </section>
   )

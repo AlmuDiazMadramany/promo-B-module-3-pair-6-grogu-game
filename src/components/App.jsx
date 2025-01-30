@@ -3,6 +3,7 @@ import "../styles/App.scss"
 import Board from "./Board";
 import Header from "./Header";
 import Dice from "./Dice";
+import Form from "./Form";
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
   const [egg, setEgg] = useState(["🥚", "🥚", "🥚"]);
   const [frog, setFrog] = useState(["🐸", "🐸", "🐸"]);
   const [gameStatus, setGameStatus] = useState("");
+  const [name, setName] = useState('');
 
   /*generar num aleatorio
     con el num aleatorio, condicional
@@ -30,24 +32,29 @@ function App() {
       //Se quita una galleta
       setCookie(cookie.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una galleta]
-      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger una 🍪');
+      setGameStatus(`${name} has ayudado a Mando a recoger una 🍪`);
     }else if(randomNumber === 2){
       //Se quita un huevo
       setEgg(egg.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [un huevo]
-      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger un 🥚');
+      setGameStatus(`${name} has ayudado a Mando a recoger un 🥚`);
     }else{
       //Se quita una rana
       setFrog(frog.slice(1));
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una rana]
-      setGameStatus('[Nombre usuario] has ayudado a Mando a recoger una 🐸');
+      setGameStatus(`${name} has ayudado a Mando a recoger una 🐸`);
     };
   };
 
+  const newName = (value) =>{
+    setName(value);
+  }
+
   return (
     <>
-    <Header/>
+    <Header name={name}/>
     <main className="page">
+      <Form newName={newName}/>
       <Board grogu={grogu}/>
 
       <section>
@@ -56,19 +63,13 @@ function App() {
       </section>
       
       <section className="goods-container">
-        <div className="goods-item">🍪</div>
-        <div className="goods-item">🍪</div>
-        <div className="goods-item">🍪</div>
+        {cookie.map((item, indice)=> <div key={indice} className="goods-item">🍪</div>)}
       </section>
       <section className="goods-container">
-        <div className="goods-item">🥚</div>
-        <div className="goods-item">🥚</div>
-        <div className="goods-item">🥚</div>
+        {egg.map((item, indice)=> <div key={indice} className="goods-item">🥚</div>)}
       </section>
       <section className="goods-container">
-        <div className="goods-item">🐸</div>
-        <div className="goods-item">🐸</div>
-        <div className="goods-item">🐸</div>
+        {frog.map((item, indice)=> <div key={indice} className="goods-item">🐸</div>)}
       </section>
       <section>
         <button className="restart-button">Reiniciar Juego</button>
