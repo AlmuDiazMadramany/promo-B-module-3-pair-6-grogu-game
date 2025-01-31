@@ -14,7 +14,14 @@ function App() {
   const [gameStatus, setGameStatus] = useState("");
   const [name, setName] = useState('');
 
-  useEffect ()
+  useEffect (()=> {
+    rollDice()
+    if(grogu.length === 6 && cookie.length !== 0 && egg.length !== 0 && frog.length !== 0 ) {
+      setGameStatus('¡¡Grogu se ha comido el cargamento!! Has perdido')
+    }
+
+
+  }, [grogu, cookie, egg, frog])
 
 
 
