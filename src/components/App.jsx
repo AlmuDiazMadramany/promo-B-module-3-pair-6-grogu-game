@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../styles/App.scss"
 import Board from "./Board";
 import Header from "./Header";
@@ -13,6 +13,10 @@ function App() {
   const [frog, setFrog] = useState(["🐸", "🐸", "🐸"]);
   const [gameStatus, setGameStatus] = useState("");
   const [name, setName] = useState('');
+
+  useEffect ()
+
+
 
   /*generar num aleatorio
     con el num aleatorio, condicional
