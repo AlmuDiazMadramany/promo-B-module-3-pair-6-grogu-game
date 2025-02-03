@@ -15,9 +15,11 @@ function App() {
   const [name, setName] = useState('');
 
   useEffect (()=> {
-    rollDice()
-    if(grogu.length === 6 && cookie.length !== 0 && egg.length !== 0 && frog.length !== 0 ) {
-      setGameStatus('¡¡Grogu se ha comido el cargamento!! Has perdido')
+    
+    if(grogu === 6 && cookie.length !== 0 && egg.length !== 0 && frog.length !== 0) {
+      return setGameStatus('¡¡Grogu se ha comido el cargamento!! Has perdido')
+    }else if(grogu !== 6 && cookie.length === 0 && egg.length === 0 && frog.length === 0){
+      return setGameStatus('Ganaste, Mando completa la misión')
     }
 
 
@@ -33,7 +35,6 @@ function App() {
 
   function rollDice(){
     const randomNumber = getRandomNumber(4);
-    console.log(randomNumber);
     if(randomNumber === 4){
       //Grogu avanza una casilla
       setGrogu(grogu+1);
@@ -41,19 +42,26 @@ function App() {
       setGameStatus('Grogu avanza una casilla');
     }else if(randomNumber === 3){
       //Se quita una galleta
+      console.log(cookie.length)
+      if(cookie.length > 0){
       setCookie(cookie.slice(1));
+      setGameStatus(`${name} has ayudado a Mando a recoger una 🍪`);} 
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una galleta]
-      setGameStatus(`${name} has ayudado a Mando a recoger una 🍪`);
+      
     }else if(randomNumber === 2){
       //Se quita un huevo
+      if(egg.length > 0){
       setEgg(egg.slice(1));
+      setGameStatus(`${name} has ayudado a Mando a recoger un 🥚`);}
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [un huevo]
-      setGameStatus(`${name} has ayudado a Mando a recoger un 🥚`);
+      
     }else{
       //Se quita una rana
+      if(frog.length > 0){
       setFrog(frog.slice(1));
+      setGameStatus(`${name} has ayudado a Mando a recoger una 🐸`);}
       //Mensaje [gameStatus]: [Nombre usuario] has ayudado a Mando a recoger [una rana]
-      setGameStatus(`${name} has ayudado a Mando a recoger una 🐸`);
+      
     };
   };
 
