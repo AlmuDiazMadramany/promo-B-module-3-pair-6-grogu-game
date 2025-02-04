@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react"
 import "../styles/App.scss"
-import Board from "./Board";
+// import Board from "./Board";
 import Header from "./Header";
-import Dice from "./Dice";
-import Form from "./Form";
+// import Dice from "./Dice";
+// import Form from "./Form";
+import Footer from "./Footer";
+import {Route, Routes} from "react-router-dom";
+
+import Options from "./Options";
+import Home from "./Home";
+import Instructions from "./Instructions";
 
 function App() {
 
@@ -72,8 +78,11 @@ function App() {
   return (
     <>
     <Header name={name}/>
+    
+
     <main className="page">
-      <Form newName={newName}/>
+      
+      {/* <Form newName={newName}/>
       <Board grogu={grogu}/>
 
       <section>
@@ -92,9 +101,18 @@ function App() {
       </section>
       <section>
         <button className="restart-button">Reiniciar Juego</button>
-      </section>
+      </section> */}
+
+      <Routes>
+      <Route path="/" element= {<Home newName={newName} grogu={grogu} rollDice={rollDice} gameStatus={gameStatus} cookie={cookie} egg={egg} frog={frog}/>}/>
+      <Route path="/instructions" element = {<Instructions/>}/>
+  
+        <Route path="/options" element= {<Options/>}/>
+      </Routes>
+
     </main>
 
+    <Footer/>
     </>
   
   )
